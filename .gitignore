@@ -1,0 +1,14 @@
+node_modules
+
+build
+.sass-cache
+
+# OSX files
+.DS_Store
+
+# Windows Files
+thumbs.db
+
+# Intellij
+.idea/
+public
