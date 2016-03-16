@@ -1,7 +1,7 @@
 # wishlist
 (all your wishes in one place)
 
-how to test api:
+how to test:
 
 1. install
 
@@ -13,4 +13,4 @@ how to test api:
 
 3. test
 
-> http://localhost:3000/api/parse?url=[url you want parse]
+> http://localhost:3000
