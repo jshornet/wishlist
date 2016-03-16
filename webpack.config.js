@@ -1,25 +1,39 @@
 'use strict';
 
+const webpack = require('webpack');
+const path = require('path');
+const nodeModulesPath = path.resolve(__dirname, 'node_modules');
+
 module.exports = {
+	resolve: {
+		extensions: ["", ".js", ".jsx"]
+	},
 	entry: {
-		app: './src/app/app'
+		app: './src/js/app'
 	},
 	output: {
-		path: __dirname + '/app',
+		path: __dirname + '/app/public/js',
 		publicPath: '',
-		filename: '[name].js',
-		library: '[name]'
+		filename: 'main.js',
 	},
-	target: 'node',
-	//watch: true,
+	watch: true,
 
 	devtool: 'source-map',
 	
 	module: {
+		preLoaders: [
+			{
+				//Eslint loader
+				test: /\.(js|jsx)$/,
+				loader: 'eslint-loader',
+				include: [path.resolve(__dirname, "src/js/app")],
+				exclude: [nodeModulesPath]
+			},
+		],
 		loaders: [{
-			test: /\.js?$/,
-			exclude: /\/node_modules\//,
-            loaders: ['babel'],
+			test: /\.jsx?$/,
+			exclude: [nodeModulesPath],
+            loaders: ['babel', 'react-map-styles'],
 		}]
 	},
 
